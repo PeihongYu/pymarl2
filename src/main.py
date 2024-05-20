@@ -48,7 +48,7 @@ def _get_config(params, arg_name, subfolder):
     if config_name is not None:
         with open(os.path.join(os.path.dirname(__file__), "config", subfolder, "{}.yaml".format(config_name)), "r") as f:
             try:
-                config_dict = yaml.load(f)
+                config_dict = yaml.load(f, Loader=yaml.FullLoader)
             except yaml.YAMLError as exc:
                 assert False, "{}.yaml error: {}".format(config_name, exc)
         return config_dict
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     # Get the defaults from default.yaml
     with open(os.path.join(os.path.dirname(__file__), "config", "default.yaml"), "r") as f:
         try:
-            config_dict = yaml.load(f)
+            config_dict = yaml.load(f, Loader=yaml.FullLoader)
         except yaml.YAMLError as exc:
             assert False, "default.yaml error: {}".format(exc)
 
@@ -102,6 +102,7 @@ if __name__ == '__main__':
     ex.add_config(config_dict)
 
     # Save to disk by default for sacred
+    results_path = parse_command(params, "local_results_path", config_dict['local_results_path'])
     map_name = parse_command(params, "env_args.map_name", config_dict['env_args']['map_name'])
     algo_name = parse_command(params, "name", config_dict['name']) 
     file_obs_path = join(results_path, "sacred", map_name, algo_name)
