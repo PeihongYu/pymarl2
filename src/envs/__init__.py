@@ -27,4 +27,6 @@ if gfootball:
     REGISTRY["gfootball"] = partial(env_fn, env=GoogleFootballEnv)
 
 if sys.platform == "linux":
-    os.environ.setdefault("SC2PATH", "~/StarCraftII")
+    # os.environ.setdefault("SC2PATH", "~/StarCraftII")
+    os.environ.setdefault("SC2PATH",
+                          "/fs/nexus-scratch/peihong/3rdparty/StarCraftII_2410")
