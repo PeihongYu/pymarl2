@@ -24,7 +24,7 @@ map_param_registry = {
         "unit_type_bits": 2,
         "map_type": "overload_roach"
     },
-        "bane_vs_hM": {
+    "bane_vs_hM": {
         "n_agents": 3,
         "n_enemies": 2,
         "limit": 30,

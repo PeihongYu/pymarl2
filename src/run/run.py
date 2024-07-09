@@ -116,6 +116,7 @@ def run_sequential(args, logger):
         "probs": {"vshape": (env_info["n_actions"],), "group": "agents", "dtype": th.float},
         "reward": {"vshape": (1,)},
         "terminated": {"vshape": (1,), "dtype": th.uint8},
+        "alive_allies": {"vshape": (env_info["n_agents"],)},
     }
     groups = {
         "agents": args.n_agents

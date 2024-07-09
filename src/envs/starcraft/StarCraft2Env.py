@@ -1529,3 +1529,12 @@ class StarCraft2Env(MultiAgentEnv):
             "restarts": self.force_restarts,
         }
         return stats
+
+    def get_alive_allies(self):
+        alive_allies_list = np.zeros([self.n_agents])
+        for al_id_1, al_unit_1 in self.agents.items():
+            if al_unit_1.health == 0:
+                alive_allies_list[al_id_1] = 0
+            else:
+                alive_allies_list[al_id_1] = 1
+        return alive_allies_list
